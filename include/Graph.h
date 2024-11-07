@@ -5,4 +5,4 @@ struct Graph
 };
 
 //Generate graph model G(n,r)
-void generateGNP(struct Graph &g);
+void generateGNP(struct Graph *g);
