@@ -4,5 +4,10 @@ struct Graph
 
 };
 
+//Allocate memory for Graph
+//n - number of vertices
+void allocateGraph(struct Graph *g, int n);
 //Generate graph model G(n,r)
-void generateGNP(struct Graph *g, float probability);
+//n - number of vertices
+//probability - edge probability
+void generateGNP(struct Graph *g, int n, float probability);
