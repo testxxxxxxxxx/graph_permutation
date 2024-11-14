@@ -15,6 +15,6 @@ void freeGraph(struct Graph *g);
 * n - number of vertices
 * probability - edge probability
 */
-void generateGNP(struct Graph *g, int n, float probability);
+void generateGNP(struct Graph *g, int n, float probability, int maxWage);
 //free memory Graph
 void freeGraph(struct Graph *g);

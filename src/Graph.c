@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../include/Graph.h"
+#include <time.h>
 
 void allocateGraph(struct Graph *g, int n)
 {
@@ -27,10 +28,20 @@ void freeGraph(struct Graph *g)
 
     //free memory all graph
 
-    free(g->matrix);
+    free(g->matrix);;
 
 }
-void generateGNP(struct Graph *g, int n, float probability)
+void generateGNP(struct Graph *g, int n, float probability, int maxWage)
 {
+    //generate graph GNP 
+
+    for(int i = 0; i < g->vertices; i++)
+    {
+        for(int j = 0; j < g->vertices; j++)
+        {
+            g->matrix[i][j] = rand() % maxWage; 
+
+        }
+    }
 
 }
