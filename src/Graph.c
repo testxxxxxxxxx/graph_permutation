@@ -39,7 +39,8 @@ void generateGNP(struct Graph *g, int n, float probability, int maxWage)
     {
         for(int j = 0; j < g->vertices; j++)
         {
-            g->matrix[i][j] = rand() % maxWage; 
+            if(rand() >= probability)
+                g->matrix[i][j] = rand() % maxWage + 1; 
 
         }
     }
