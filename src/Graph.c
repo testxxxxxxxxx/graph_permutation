@@ -45,3 +45,45 @@ void generateGNP(struct Graph *g, int n, float probability, int maxWage)
     }
 
 }
+bool graphDFS(struct Graph *g, int vertex, int *permutation, int count, int permutationSize, bool *visited)
+{
+    //DFS
+
+    visited[vertex] = true;
+
+    if(count == g->vertices && isHamilton(g, visited))
+        return true;
+    else
+        return false;
+
+    for(int i = 0; i < vertex; i++)
+    {
+        if(g->matrix[vertex][i] != 0 && visited[i] != true)
+        {
+            if(permutation[i] == g->matrix[vertex][i])
+                count++;
+            else
+                count = 0;         
+
+            bool state = graphDFS(g, i, permutation, count, permutationSize, visited);
+
+            if(state)
+                return true;
+        }
+    }
+
+    return false;
+}
+bool isHamilton(struct Graph *g, bool *visited)
+{
+    //check if is hamiltonian path
+
+    for(int i = 0; i < g->vertices; i++)
+    {
+        if(!visited[i])
+            return false;
+
+    }
+
+    return true;
+}
