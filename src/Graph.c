@@ -46,6 +46,19 @@ void generateGNP(struct Graph *g, int n, float probability, int maxWage)
     }
 
 }
+bool graphFindPermutation(struct Graph *g, int *permutation, int permutationSize)
+{
+    for(int i = 0; i < g->vertices; i++)
+    {
+        bool *visited = (bool *)malloc(g->vertices * sizeof(bool));
+
+        if(graphDFS(g, i, permutation, 0, permutationSize, visited))
+            return true;
+
+    }
+
+    return false;
+}
 bool graphDFS(struct Graph *g, int vertex, int *permutation, int count, int permutationSize, bool *visited)
 {
     //DFS

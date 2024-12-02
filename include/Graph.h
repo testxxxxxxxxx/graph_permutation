@@ -20,6 +20,8 @@ void freeGraph(struct Graph *g);
 void generateGNP(struct Graph *g, int n, float probability, int maxWage);
 //free memory Graph
 void freeGraph(struct Graph *g);
+//find permutation in graph
+bool graphFindPermutation(struct Graph *g, int *permutation, int permutationSize);
 //graph DFS algorithm
 bool graphDFS(struct Graph *g, int vertex, int *permutation, int count, int permutationSize, bool *visited);
 //check if every vertices has benn visited
