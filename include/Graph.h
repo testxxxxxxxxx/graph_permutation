@@ -1,3 +1,7 @@
+#ifndef GRAPH_H
+
+#define GRAPH_H 1
+
 #include <stdbool.h>
 
 struct Graph
@@ -26,3 +30,5 @@ bool graphFindPermutation(struct Graph *g, int *permutation, int permutationSize
 bool graphDFS(struct Graph *g, int vertex, int *permutation, int count, int permutationSize, bool *visited);
 //check if every vertices has benn visited
 bool isHamilton(struct Graph *g, bool *visited);
+
+#endif

@@ -33,7 +33,9 @@ void freeGraph(struct Graph *g)
 }
 void generateGNP(struct Graph *g, int n, float probability, int maxWage)
 {
-    //generate graph GNP 
+    //generate graph GNP
+
+    srand(time(NULL));
 
     for(int i = 0; i < g->vertices; i++)
     {
