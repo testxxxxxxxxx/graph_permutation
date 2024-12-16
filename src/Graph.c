@@ -52,6 +52,10 @@ bool graphFindPermutation(struct Graph *g, int *permutation, int permutationSize
 {
     //helper function for graphDFS
 
+    //check correct correct permutation length
+    if(permutationSize < g->vertices)
+        return false;
+
     bool *visited = (bool *)malloc(g->vertices * sizeof(bool));
 
     if(graphDFS(g, 0, permutation, permutationSize, visited, 0))

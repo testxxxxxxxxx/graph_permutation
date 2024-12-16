@@ -16,8 +16,9 @@ int main(int argc, char *argv[])
     printGraph(ptr);
 
     int permutation[] = {1, 2, 3, 4, 5, 6};
+    int size = sizeof(permutation) / sizeof(permutation[0]);
 
-    printf("permutation: %d", graphFindPermutation(ptr, permutation, 7));
+    printf("permutation: %d", graphFindPermutation(ptr, permutation, size));
 
     return 0;
 }
