@@ -26,9 +26,11 @@ void generateGNP(struct Graph *g, int n, float probability, int maxWage);
 void freeGraph(struct Graph *g);
 //find permutation in graph
 bool graphFindPermutation(struct Graph *g, int *permutation, int permutationSize);
-//graph DFS algorithm
-bool graphDFS(struct Graph *g, int vertex, int *permutation, int count, int permutationSize, bool *visited);
+//graph DFS backtracking algorithm for find hamiltonian path with permutation
+bool graphDFS(struct Graph *g, int vertex, int *permutation, int permutationSize, bool *visited, int it);
 //check if every vertices has benn visited
 bool isHamilton(struct Graph *g, bool *visited);
+//Print graph
+void printGraph(struct Graph *g);
 
 #endif

@@ -41,7 +41,7 @@ void generateGNP(struct Graph *g, int n, float probability, int maxWage)
     {
         for(int j = 0; j < g->vertices; j++)
         {
-            if(rand() >= probability)
+            if(((double)rand() / (double)RAND_MAX) <= probability)
                 g->matrix[i][j] = rand() % maxWage + 1; 
 
         }
@@ -50,41 +50,44 @@ void generateGNP(struct Graph *g, int n, float probability, int maxWage)
 }
 bool graphFindPermutation(struct Graph *g, int *permutation, int permutationSize)
 {
-    for(int i = 0; i < g->vertices; i++)
-    {
-        bool *visited = (bool *)malloc(g->vertices * sizeof(bool));
+    //helper function for graphDFS
 
-        if(graphDFS(g, i, permutation, 0, permutationSize, visited))
-            return true;
+    bool *visited = (bool *)malloc(g->vertices * sizeof(bool));
 
-    }
+    if(graphDFS(g, 0, permutation, permutationSize, visited, 0))
+        return true;
 
     return false;
 }
-bool graphDFS(struct Graph *g, int vertex, int *permutation, int count, int permutationSize, bool *visited)
+bool graphDFS(struct Graph *g, int vertex, int *permutation, int permutationSize, bool *visited, int it)
 {
-    //DFS
+    //bactracking algorithm for find permutation as hamiltonian path
 
     visited[vertex] = true;
 
-    if(count == g->vertices && isHamilton(g, visited))
-        return true;
-    else
-        return false;
+    if(it + 1 == g->vertices)
+    {     
+        if(isHamilton(g, visited))
+            return true;
+        else
+            return false;
 
-    for(int i = 0; i < vertex; i++)
+    }
+
+    for(int i = 0; i < g->vertices; i++)
     {
         if(g->matrix[vertex][i] != 0 && visited[i] != true)
         {
-            if(permutation[i] == g->matrix[vertex][i])
-                count++;
-            else
-                count = 0;         
+            if(permutation[it] == g->matrix[vertex][i])
+                it++;
 
-            bool state = graphDFS(g, i, permutation, count, permutationSize, visited);
-
-            if(state)
+            if(graphDFS(g, i, permutation, permutationSize, visited, it))
                 return true;
+
+            visited[vertex] = false;
+            if(it > 0)
+                it--;
+
         }
     }
 
@@ -102,4 +105,19 @@ bool isHamilton(struct Graph *g, bool *visited)
     }
 
     return true;
+}
+void printGraph(struct Graph *g)
+{
+    for(int i = 0; i < g->vertices; i++)
+    {
+        for(int j = 0; j < g->vertices; j++)
+        {
+            printf(" %d", g->matrix[i][j]);
+
+        }
+
+        printf("\n");
+
+    }
+
 }

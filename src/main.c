@@ -11,11 +11,13 @@ int main(int argc, char *argv[])
 
     allocateGraph(ptr, 7);
 
-    generateGNP(ptr, 7, 0.85, 10);
+    generateGNP(ptr, 7, 0.5, 7);
 
-    int permutation[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    printGraph(ptr);
 
-    printf("permutation: %d", graphFindPermutation(ptr, permutation, 10));
+    int permutation[] = {1, 2, 3, 4, 5, 6};
+
+    printf("permutation: %d", graphFindPermutation(ptr, permutation, 7));
 
     return 0;
 }
