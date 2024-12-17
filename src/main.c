@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 
     srand(time(NULL));
 
-    printf("n: %d", (int)argv[1]);
+    printf("n: %d", 7);
 
     allocateGraph(ptr, 7);
 
