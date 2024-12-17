@@ -35,8 +35,6 @@ void generateGNP(struct Graph *g, int n, float probability, int maxWage)
 {
     //generate graph GNP
 
-    srand(time(NULL));
-
     for(int i = 0; i < g->vertices; i++)
     {
         for(int j = 0; j < g->vertices; j++)
@@ -60,6 +58,8 @@ bool graphFindPermutation(struct Graph *g, int *permutation, int permutationSize
 
     if(graphDFS(g, 0, permutation, permutationSize, visited, 0))
         return true;
+
+    free(visited);
 
     return false;
 }
@@ -124,4 +124,27 @@ void printGraph(struct Graph *g)
 
     }
 
+}
+int* generatePermutation(int n)
+{
+    int* permutation = (int*)malloc(n * sizeof(n));
+    bool* visited = (bool*)malloc((n + 1)*sizeof(bool)); //visited array is used to provide generate unique numbers permutation
+
+    visited[0] = true;
+
+    for(int i = 0; i < n; i++)
+    {
+        //get random number of permutation
+
+        int number = 0;
+
+        while(number == 0 || visited[number] == true)
+            number = rand() % n + 1; 
+
+        visited[number] = true; 
+        permutation[i] = number;
+
+    }
+
+    return permutation;
 }

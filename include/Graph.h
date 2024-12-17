@@ -32,5 +32,7 @@ bool graphDFS(struct Graph *g, int vertex, int *permutation, int permutationSize
 bool isHamilton(struct Graph *g, bool *visited);
 //Print graph
 void printGraph(struct Graph *g);
+//Generate permutation
+int* generatePermutation(int n);
 
 #endif
